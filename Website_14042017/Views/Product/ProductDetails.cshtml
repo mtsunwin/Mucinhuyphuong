@@ -1,0 +1,56 @@
+﻿@model Website_14042017.Models.Product
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+<h2>Chi tiết sản phẩm</h2>
+@{
+    if (Model != null)
+    {
+        <div>
+            <h4>@Model.Name</h4>
+            <hr>
+            <dl class="dl-horizontal">
+                <dt>
+                    Loại sản phẩm
+                </dt>
+                <dd>
+                    @Model.ProductType
+                </dd>
+                <dt>
+                    Nước sản xuất
+                </dt>
+                <dd>
+                    @Model.Country
+                </dd>
+                <dt>
+                    Nơi sản xuất
+                </dt>
+                <dd>
+                    @Model.Manufacturer
+                </dd>
+                <dt>
+                    Giá
+                </dt>
+                <dd>
+                    @Model.Price
+                </dd>
+                <dt>
+                    Mô tả
+                </dt>
+                <dd>
+                    @Model.Descrip
+                </dd>
+                <dt>
+                    Hình ảnh
+                </dt>
+                <dd>
+                    <img src="@Model.Image" />
+                </dd>
+            </dl>
+        </div>
+        <p>
+            <a href="/product/productlist?type=@Model.ProductType">Back to List</a>
+        </p>
+    }
+}

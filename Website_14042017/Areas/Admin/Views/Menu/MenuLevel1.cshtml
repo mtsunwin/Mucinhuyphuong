@@ -1,0 +1,201 @@
+﻿@model IEnumerable<Website_14042017.Models.MenuLevel1>
+@{
+    ViewBag.Title = "MenuLevel1";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+@section cssHeader{
+    <link href="~/Content/styleMenu.css" rel="stylesheet" />
+}
+<h2>Menu cấp 1</h2>
+<div style="clear: both;">
+    <nav style="background-color: #4e4e4e;">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="top-menu">
+                <ul class="nav navbar-nav" id="menutop"></ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<br />
+<div id="topmenu1">
+    <div class="form-group row">
+        <div class="col-md-3">
+            <select class="form-control" id="selectM0">
+                @if (ViewBag.Menu0s != null)
+                {
+                    foreach (Website_14042017.Models.MenuLevel0 item in ViewBag.Menu0s)
+                    {
+                        <option value="@item.Name" selected="selected">@item.DisplayName</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+</div>
+<div id="leftmenu1"></div>
+<div id="rightmenu1">
+    <div id="subrightmenu1">
+        <h4>Thêm menu</h4>
+        <form action="/Admin/Menu/PostMenu1" method="post">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <span class="field-validation-valid text-danger" data-valmsg-replace="true">@ViewBag.MessageAddMenu1</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="IdMenuLevel0">Menu cha</label>
+                    <div class="col-md-6">
+                        <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="IdMenuLevel0" name="IdMenuLevel0" type="text" value="" readonly="readonly">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="IdMenuLevel0" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="DisplayName">Menu con cấp 1</label>
+                    <div class="col-md-6">
+                        <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="DisplayName" name="DisplayName" type="text" value="@if (@ViewBag.ModelMenu1 != null) { @ViewBag.ModelMenu1.DisplayName;}">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="DisplayName" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="Link">Link</label>
+                    <div class="col-md-6">
+                        <input class="form-control text-box single-line" id="Link" name="Link" type="text" value="@if (@ViewBag.ModelMenu1 != null) { @ViewBag.ModelMenu1.Link;}">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Link" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-7 col-md-12">
+                        <input type="submit" value="Thêm menu" class="btn btn-default btn-success">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="subrightmenu2">
+        <h4 id="titlesubrightmenu2"></h4>
+        <!-- Edit menu level 1 -->
+        <div id="editsubrightmenu2">
+            <form action="/Admin/Menu/PostEditMenu1" method="post">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <span class="field-validation-valid text-danger" data-valmsg-replace="true">@ViewBag.MessageEditMenu1</span>
+                        </div>
+                    </div>
+                    <input type="hidden" value="" name="Id" id="IdEdit" />
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="IdMenuLevel0">Menu cha</label>
+                        <div class="col-md-6">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="IdMenuLevel0Edit" name="IdMenuLevel0" type="text" value="" readonly="readonly">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="IdMenuLevel0" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="DisplayName">Menu con cấp 1</label>
+                        <div class="col-md-6">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="DisplayNameEdit" name="DisplayName" type="text" value="@if (@ViewBag.ModelMenu1 != null) { @ViewBag.ModelMenu1.DisplayName;}">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="DisplayName" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="Link">Link</label>
+                        <div class="col-md-6">
+                            <input class="form-control text-box single-line" id="LinkEdit" name="Link" type="text" value="@if (@ViewBag.ModelMenu1 != null) { @ViewBag.ModelMenu1.Link;}">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Link" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-7 col-md-12">
+                            <input type="submit" value="Cập nhật" class="btn btn-default btn-success">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Add menu level 2 -->
+        <div id="addm2subrightmenu2"></div>
+    </div>
+</div>
+
+@section ScriptsSecond{
+    <script>
+        var tags = @Html.Raw(Json.Encode(@Model));
+        //Load content if select change
+        $("#selectM0").on("change", function (e) {
+            $("#editsubrightmenu2").css({ 'display': 'none' });
+            var optionSelected = $("option:selected", this);
+            var valueSelected = this.value;
+            var str = "<table class='table'><tbody><tr><th>Tên</th><th>Menu cấp 1</th><th>Link</th><th></th></tr>";
+            for(var i = 0; i<tags.length; i++){
+                if(tags[i].IdMenuLevel0 == valueSelected){
+                    str +="<tr>"
+                    + "<td>"+tags[i].DisplayName+"</td>"
+                    + "<td>"+tags[i].IdMenuLevel0+"</td>"
+                    + "<td>"+tags[i].Link+"</td>"
+                    + "<td>"
+                    + "<a href='#' data-id='"+tags[i].Id+"' data-IdMenuLevel0='"+tags[i].IdMenuLevel0+"' data-DisplayName='"+tags[i].DisplayName+"' data-Link='"+tags[i].Link+"' id='editM1'>Sửa</a> |"
+                    + "<a href='/Admin/Menu/DeleteMenu1?id="+tags[i].Id+"&idMenu0="+tags[i].IdMenuLevel0+"'>Xóa</a>"
+                    + "</td></tr>";
+                };
+            };
+            str+= "</tbody></table>";
+            $("#leftmenu1").html(str);
+            $("#IdMenuLevel0").attr("value",valueSelected);
+        });
+        //Load table menu level 1 with option selected
+        function loadTable(id){
+            var str = "<table class='table'><tbody><tr><th>Tên</th><th>Menu cấp 1</th><th>Link</th><th></th></tr>";
+            for(var i = 0; i<tags.length; i++){
+                if(tags[i].IdMenuLevel0 == id){
+                    str +="<tr>"
+                    + "<td>"+tags[i].DisplayName+"</td>"
+                    + "<td>"+tags[i].IdMenuLevel0+"</td>"
+                    + "<td>"+tags[i].Link+"</td>"
+                    + "<td>"
+                    + "<a href='#' data-id='"+tags[i].Id+"' data-IdMenuLevel0='"+tags[i].IdMenuLevel0+"' data-DisplayName='"+tags[i].DisplayName+"' data-Link='"+tags[i].Link+"' id='editM1'>Sửa</a> |"
+                    + "<a href='/Admin/Menu/DeleteMenu1?id="+tags[i].Id+"&idMenu0="+tags[i].IdMenuLevel0+"'>Xóa</a>"
+                    + "</td></tr>";
+                };
+            };
+            str+= "</tbody></table>";
+            $("#leftmenu1").html(str);
+        };
+        //start load page
+        $(document).ready(function(){
+            var ffocus = @Html.Raw(Json.Encode(@ViewBag.Focus));
+            if(ffocus != null){
+                $("#selectM0").val(ffocus);
+            }
+            var id =$("#selectM0 option:selected").val();
+            loadTable(id);
+            $("#IdMenuLevel0").attr("value",id);
+            GetMenuTop();
+        });
+        //event when click tag a edit
+        $(document).on("click", "#editM1", function () {
+            $("#titlesubrightmenu2").text("Sửa thông tin");
+            $("#editsubrightmenu2").css({ 'display': 'block' });
+            var id = $(this).attr("data-id");
+            var namemn0 = $(this).attr("data-IdMenuLevel0");
+            var displayname = $(this).attr("data-DisplayName");
+            var link = $(this).attr("data-Link");
+            $("#editsubrightmenu2 #IdEdit").attr("value", id);
+            $("#editsubrightmenu2 #IdMenuLevel0Edit").attr("value", namemn0);
+            $("#editsubrightmenu2 #DisplayNameEdit").attr("value", displayname);
+            $("#editsubrightmenu2 #LinkEdit").attr("value", link);
+        });
+        function GetMenuTop(){
+            $.ajax({
+                url: '/MenuTop/GenerateMenu',
+                type: 'GET',
+                success: function (data) {
+                    $("#menutop").html(data);
+                },
+                error: function (error) {
+
+                }
+            });
+        }
+    </script>
+}

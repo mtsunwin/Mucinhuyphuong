@@ -1,0 +1,14 @@
+﻿@model Website_14042017.ModelViews.NewsView
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+<div id="OperationCell">
+
+    @{
+        if (Model != null)
+        {
+            @Html.Raw(Model.Content)
+        }
+    }
+</div>

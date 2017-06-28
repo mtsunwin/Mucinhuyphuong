@@ -1,0 +1,99 @@
+﻿@model FileInfo[]
+@{
+    ViewBag.Title = "Quản lý hình ảnh";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+@section cssHeader{
+    <link href="~/Content/styleImage.css" rel="stylesheet" />
+}
+<div id="containerImage">
+    <div id="main">
+        <div id="navbar">
+            <ul>
+                @{
+                    if (@ViewBag.Folders != null)
+                    {
+                        foreach (var item in @ViewBag.Folders)
+                        {
+                <li><a href="../Image/index?name=@item">@item</a></li>
+                        }
+                    }
+                }
+            </ul>
+        </div>
+
+        <div id="header" class="row">
+            <div id="left_bar_header" class="col-lg-6">
+                <span class="title"> The image repository</span><span class="title_dark"> - @ViewBag.NameFolder</span>
+            </div>
+            <div class="row col-lg-6">
+                @using (Html.BeginForm("FileUpload", "Image", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label for="file">Tải hình ảnh lên server:</label>
+                            <input type="file" name="file" id="file" style="width: 100%;" />
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="file">Lưu vào</label>
+                            <input type="submit" name="name" value="@ViewBag.NameFolder" />
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <hr />
+    <div id="content">
+        <div class="gallery">
+            <div style="text-align: center; width:100%;">
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            @*<div class="picture" onmouseover="this.className='picture_2'" onmouseout="this.className='picture'">*@
+                            <div class="picture">
+                                <a href="#">
+                                    <img src="~/Areas/Admin/Images/@ViewBag.NameFolder/@item.Name" alt="No image" />
+                                </a>
+                                <div class="footer"><a href="#">@item.Name</a></div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var tags = @Html.Raw(Json.Encode(@ViewBag.NameFolder));
+        $("#uploadEditorImage").change(function () {
+            var data = new FormData();
+            var files = $("#uploadEditorImage").get(0).files;
+            if (files.length > 0) {
+                data.append("HelpSectionImages", files[0]);
+            }
+            $.ajax({
+                url: resolveUrl("~/Areas/Admin/Image/UpLoadImage"),
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (response) {
+                    //code after success
+                    alert("Tải hình thành công");
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        });
+    </script>
+}

@@ -1,0 +1,212 @@
+﻿@model IEnumerable<Website_14042017.Models.MenuLevel2>
+
+@{
+    ViewBag.Title = "MenuLevel2";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+@section cssHeader{
+    <link href="~/Content/styleMenu.css" rel="stylesheet" />
+}
+<h2>Menu cấp 2</h2>
+<div id="topmenu1">
+    <div class="form-group row">
+        <label class="col-md-3 m2label">Menu cấp 0</label>
+        <div class="col-md-3">
+            <select class="form-control" id="selectM0">
+                @if (ViewBag.Menu0s != null)
+                {
+                    foreach (Website_14042017.Models.MenuLevel0 item in ViewBag.Menu0s)
+                    {
+                        <option value="@item.Name" selected="selected">@item.DisplayName</option>
+                    }
+                }
+            </select>
+        </div>
+        <label class="col-md-2 m2label">Menu cấp 1</label>
+        <div class="col-md-3">
+            <select class="form-control" id="selectM1">
+                @if (ViewBag.Menu1s != null)
+                {
+                    foreach (Website_14042017.Models.MenuLevel1 item in ViewBag.Menu1s)
+                    {
+                        <option value="@item.Id" selected="selected">@item.DisplayName</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+</div>
+<div id="leftmenu1">
+    <div id="leftmenu1Table">
+
+    </div>
+</div>
+<div id="rightmenu1">
+    <div id="subrightmenu1">
+        <h4>Thêm menu</h4>
+        <form action="/Admin/Menu/PostMenu2" method="post">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <span class="field-validation-valid text-danger" data-valmsg-replace="true">@ViewBag.MessageAddMenu2</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="IdMenuLevel1">Mã menu cha</label>
+                    <div class="col-md-6">
+                        <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="IdMenuLevel1" name="IdMenuLevel1" type="text" value="" readonly="readonly">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="IdMenuLevel1" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="DisplayName">Tên hiển thị</label>
+                    <div class="col-md-6">
+                        <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="DisplayName" name="DisplayName" type="text" value="@if (@ViewBag.ModelMenu2 != null) { @ViewBag.ModelMenu2.DisplayName;} ">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="DisplayName" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="Link">Link</label>
+                    <div class="col-md-6">
+                        <input class="form-control text-box single-line" id="Link" name="Link" type="text" value="@if (@ViewBag.ModelMenu2 != null) { @ViewBag.ModelMenu2.Link;}">
+                        <span class="field-validation-valid text-danger" data-valmsg-for="Link" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <input type="hidden" id="idMenu0" name="idMenu0" value="" />
+                <div class="form-group">
+                    <div class="col-md-offset-7 col-md-10">
+                        <input type="submit" value="Thêm menu" class="btn btn-default btn-success">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="subrightmenu2">
+        <h4 id="mnedit2"></h4>
+        <div id="editsubrightmenu2">
+            <form action="/Admin/Menu/PostEditMenu2" method="post">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <span class="field-validation-valid text-danger" data-valmsg-replace="true">@ViewBag.MessageEditMenu2</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="IdMenuLevel1">Mã menu cha</label>
+                        <div class="col-md-6">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="IdMenuLevel1Edit" name="IdMenuLevel1" type="text" value="" readonly="readonly">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="IdMenuLevel1" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="DisplayName">Tên hiển thị</label>
+                        <div class="col-md-6">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này không để trống." id="DisplayNameEdit" name="DisplayName" type="text" value="@if (@ViewBag.ModelMenu2 != null) { @ViewBag.ModelMenu2.DisplayName;} ">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="DisplayName" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="Link">Link</label>
+                        <div class="col-md-6">
+                            <input class="form-control text-box single-line" id="LinkEdit" name="Link" type="text" value="@if (@ViewBag.ModelMenu2 != null) { @ViewBag.ModelMenu2.Link;}">
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Link" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="idMenu0Edit" name="idMenu0Edit" value="" />
+                    <input type="hidden" id="Id" name="Id" value="" />
+                    <div class="form-group">
+                        <div class="col-md-offset-7 col-md-10">
+                            <input type="submit" value="Cập nhật" class="btn btn-default btn-success">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section ScriptsSecond{
+    <script>
+        var m0 = @Html.Raw(Json.Encode(@ViewBag.Menu0s));
+        var m1 = @Html.Raw(Json.Encode(@ViewBag.Menu1s));
+        var m2 = @Html.Raw(Json.Encode(@Model));
+        //Load select menu level 0 and menu level 1
+        $("#selectM0").on("change", function (e) {
+            $("#IdMenuLevel1").attr("value","");
+            $("#leftmenu1Table").empty();
+            var optionSelected = $("option:selected", this);
+            var valueSelected = this.value;
+            loadSelect(valueSelected);
+            $("#idMenu0").attr("value",valueSelected);
+        });
+        function loadSelect(idm0){
+            $("#leftmenu1Table").empty();
+            $("#selectM1").find("option").remove();
+            $.each(m1, function(index, m){
+                if(m.IdMenuLevel0 == idm0)
+                    $("#selectM1").append($("<option>",{value:m.Id, text:m.DisplayName}));
+            });
+            var idmn1 = $("#selectM1 option:selected").val();
+            loadMenu2s(idmn1);
+            $("#IdMenuLevel1").attr("value",idmn1);
+        }
+        //load list menu level 2
+        function loadMenu2s(idm1){
+            var str = "<table class='table'><tbody><tr><th>Tên</th><th>Menu cha</th><th>Link</th><th></th></tr>";
+            $.each(m2,function(index, m){
+                if(m.IdMenuLevel1 == idm1){
+                    var idm0 = $("#selectM0 option:selected").val();
+                    str+="<tr>"
+                    +"<td>"+m.DisplayName+"</td>"
+                    +"<td>"+m.IdMenuLevel1+"</td>"
+                    +"<td>"+m.Link+"</td>"
+                    +"<td>"
+                    + "<a href='#' data-id='"+m.Id+"' data-IdMenuLevel1='"+m.IdMenuLevel1+"' data-DisplayName='"+m.DisplayName+"' data-Link='"+m.Link+"' id='editM2'>Sửa</a> |"
+                    + "<a href='/Admin/Menu/DeleteMenu2?id="+m.Id+"&idMenu0="+idm0+"&idMenu1="+m.IdMenuLevel1+"'>Xóa</a>"
+                    +"</td></tr>";
+                }
+            });
+            str+="</tbody></table>";
+            $("#leftmenu1Table").html(str);
+        }
+        $("#selectM1").on("change",function(e){
+            $("#leftmenu1Table").empty();
+            var optionSelectedM1 = $("option:selected", this);
+            var valueSelectedM1 = this.value;
+            loadMenu2s(valueSelectedM1);
+            $("#IdMenuLevel1").attr("value",valueSelectedM1);
+        });
+        $(document).ready(function(){
+            var m0 = @Html.Raw(Json.Encode(@ViewBag.FocusM0));
+            var m1 = @Html.Raw(Json.Encode(@ViewBag.FocusM1));
+            var idmn0 = $("#selectM0 option:selected").val();
+            loadSelect(idmn0);
+            $("#idMenu0").attr("value",idmn0);
+            if(m0!=null){
+                $("#selectM0").val(m0);
+                var idml0 = $("#selectM0 option:selected").val();
+                loadSelect(idml0);
+                if(m1 != null){
+                    $("#selectM1").val(m1);
+                }
+            }
+        });
+        //event when click tag a edit
+        $(document).on("click", "#editM2", function () {
+            $("#mnedit2").text("Sửa thông tin");
+            $("#editsubrightmenu2").css({ 'display': 'block' });
+            var id = $(this).attr("data-id");
+            var namemn1 = $(this).attr("data-IdMenuLevel1");
+            var displayname = $(this).attr("data-DisplayName");
+            var link = $(this).attr("data-Link");
+            var idml0 = $("#selectM0 option:selected").val();
+            $("#editsubrightmenu2 #idMenu0Edit").attr("value", idml0);
+            $("#editsubrightmenu2 #Id").attr("value", id);
+            $("#editsubrightmenu2 #IdMenuLevel1Edit").attr("value", namemn1);
+            $("#editsubrightmenu2 #DisplayNameEdit").attr("value", displayname);
+            $("#editsubrightmenu2 #LinkEdit").attr("value", link);
+        });
+    </script>
+}

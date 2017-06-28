@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Admin -@ViewBag.Title</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- MetisMenu CSS -->
+    <link href="~/Content/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="~/Content/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="~/Content/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="~/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @RenderSection("cssHeader", false)
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Thông tin vật tư in lưới - Quản lý</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                            <a href="/admin/login/setting"><i class="fa fa-user fa-fw"></i> Thông tin tài khoản</a>
+                        </li>
+                        <li>
+                            <a href="/admin/login/setting"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="/admin/login/logout"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <!-- News -->
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-envelope"></span> Tin tức<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/news/writepost">Viết bài mới</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/news/allnews">Tất cả bài viết</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/news/allnews?type=posted">Bài đã đăng</a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/news/allnews?type=writing">Bài đang viết</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Images -->
+                        <li>
+                            <a href="/admin/image/index"><span class="glyphicon glyphicon-picture"></span> Hình ảnh</a>
+                        </li>
+                        <!-- Menu -->
+                        <li>
+                            <a href="tables.html"><span class="glyphicon glyphicon-align-left"></span> Menu <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                @*<li>
+                                    <a href="/admin/menu/MenuLevel0">Menu cấp 0</a>
+                                </li>*@
+                                <li>
+                                    <a href="/admin/menu/MenuLevel1">Menu cấp 1</a>
+                                </li>
+                                @*<li>
+                                    <a href="/admin/menu/MenuLevel2">Menu cấp 2</a>
+                                </li>*@
+                            </ul>
+                        </li>
+                        <!-- type product -->
+                        <li>
+                            <a href="/admin/LoaiSanPham/DanhSachLoaiSanPham"><span class="glyphicon glyphicon-asterisk"></span> Loại sản phẩm</a>
+                        </li>
+                        <!-- product -->
+                        <li>
+                            <a href="/admin/SanPham/DanhSachSanPham"><span class="glyphicon glyphicon-certificate"></span> Sản phẩm</a>
+                        </li>
+                        <!--  footer -->
+                        <li>
+                            <a href="/admin/webinfos/Index"><span class="glyphicon glyphicon-list-alt"></span> Thông tin footer</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="~/Content/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="~/Content/vendor/raphael/raphael.min.js"></script>
+    <script src="~/Content/vendor/morrisjs/morris.min.js"></script>
+    <script src="~/Content/data/morris-data.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="~/Content/dist/js/sb-admin-2.js"></script>
+    <script src="~/Areas/Admin/Plugins/ckeditor/ckeditor.js"></script>
+    @RenderSection("Scripts", false)
+    @RenderSection("ScriptsSecond",false)
+</body>
+</html>

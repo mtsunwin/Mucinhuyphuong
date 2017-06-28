@@ -1,0 +1,14 @@
+﻿#uploadImgServer{
+    width: 100%;
+    height: 100%;
+}
+#uploadImgServer ul{
+    list-style-type: none;
+}
+#uploadImgServer ul li{
+    float: left;
+    padding: 3px;
+}
+#uploadImgServer ul li:hover{
+    border: 1px solid green;
+}

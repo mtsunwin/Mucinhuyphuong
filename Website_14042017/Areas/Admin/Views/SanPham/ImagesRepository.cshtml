@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Kho hình ảnh</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/styleImage.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div id="containerImage">
+            <div id="main">
+                <div id="navbar">
+                    <ul>
+                        @{
+                            if (@ViewBag.Folders != null)
+                            {
+                                foreach (var item in @ViewBag.Folders)
+                                {
+                                    <li><a href="/admin/sanpham/ImagesRepository?nameimg=@item">@item</a></li>
+                                }
+                            }
+                        }
+                    </ul>
+                </div>
+
+                <div id="header" class="row">
+                    <div id="left_bar_header" class="col-lg-5">
+                        <span class="title"> The image repository</span><span class="title_dark"> - @ViewBag.NameFolder</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content">
+                <div class="gallery">
+                    <div style="text-align: center; width:100%;">
+                        @{
+                            if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <div class="picture">
+                                        <a href="#" class="returnImage" data-url="/Areas/Admin/Images/@ViewBag.NameFolder/@item.Name">
+                                            <img src="~/Areas/Admin/Images/@ViewBag.NameFolder/@item.Name" alt="No image" />
+                                        </a>
+                                        <div class="footer"><a href="#" class="returnImage" data-url="/Areas/Admin/Images/@ViewBag.NameFolder/@item.Name">@item.Name</a></div>
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Plugins/ckeditor/ckeditor.js"></script>
+    <script>
+        //Chooes image
+        $('.returnImage').on("click", this, function (e) {
+            var link = $(this).attr('data-url');
+            $.session.set("imgpr", link);
+            window.close();
+        });
+    </script>
+</body>
+</html>

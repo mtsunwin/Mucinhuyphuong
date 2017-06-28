@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Website_14042017.Models.MenuLevel0>
+
+@{
+    ViewBag.Title = "MenuLevel0";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+@section cssHeader{
+    <link href="~/Content/styleMenu.css" rel="stylesheet" />
+}
+<h2>Menu cấp 0</h2>
+<h3>Danh sách menu hiện tại</h3>
+<div id="viewmenu0" class="top-menu">
+    <ul class="nav">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <li>
+                    <a href="#@item.Name" name="@item.Name" data-DisplayName="@item.DisplayName"
+                       data-Link="@item.Link" class="itemMenu">@item.DisplayName</a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+<!-- add menu -->
+@*<div id="createmenu0">
+    <h3>Thêm mới menu</h3>
+    <form action="/admin/menu/PostMenu0" method="post" id="frmPostMenu">
+        <div class="form-group">
+            <div class="col-md-12">
+                <span class="field-validation-valid text-danger" data-valmsg-replace="true">@ViewBag.MessageAddMenu0</span>
+            </div>
+        </div>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-4" for="Name">Tên đánh dấu</label>
+                <div class="col-md-6">
+                    <input class="form-control text-box single-line" id="Name" name="Name" type="text" value="@if (@ViewBag.Model != null) { @ViewBag.Model.Name;}" data-val="true" data-val-required="Trường này là bắt buộc nhập.">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4" for="DisplayName">Tên hiển thị</label>
+                <div class="col-md-6">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này là bắt buộc nhập." id="DisplayName" name="DisplayName" type="text" value="@if (@ViewBag.Model != null) { @ViewBag.Model.DisplayName;}">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="DisplayName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4" for="Link">Link</label>
+                <div class="col-md-6">
+                    <input class="form-control text-box single-line" id="Link" name="Link" type="text" value="@if (@ViewBag.Model != null) { @ViewBag.Model.Link;}">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="Link" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-7 col-md-10">
+                    <input type="submit" value="Tạo mới" class="btn btn-default btn-success" name="submitAdd" id="submitAdd">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <span>
+                        <i>Chú thích:</i>
+                        Tên đánh dấu không thay đổi được.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>*@
+<!-- Detais/ Edit / Delete menu -->
+@*<div id="informenu0">
+    <h3>Thông tin chi tiết</h3>
+    <div id="detailsMenu">
+    </div>
+    <div class="form-group">
+        <div class="col-md-12">
+            <span class="field-validation-valid text-danger" data-valmsg-replace="true">@ViewBag.MessageDeleteMenu0</span>
+        </div>
+    </div>
+    <form action="/admin/menu/PostEditMenu0" method="post" id="frmEdit">
+        <div id="editMenu" class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">
+                    <span class="field-validation-valid text-danger" data-valmsg-replace="true">@ViewBag.MessageEditMenu0</span>
+                </div>
+            </div>
+            <input type="hidden" value="" name="Name" id="nameEdit" />
+            <div class="form-group">
+                <label class="control-label col-md-4" for="DislayName">Tên hiển thị</label>
+                <div class="col-md-6">
+                    <input class="form-control text-box single-line" data-val="true" data-val-required="Trường này là bắt buộc nhập." id="DisplayNameEdit" name="DisplayName" type="text" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="DisplayName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-4" for="Link">Link</label>
+                <div class="col-md-6">
+                    <input class="form-control text-box single-line" id="LinkEdit" name="Link" type="text" value="">
+                    <span class="field-validation-valid text-danger" data-valmsg-for="LinkEdit" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-7 col-md-10">
+                    <input type="submit" value="Cập nhật" class="btn btn-default btn-success" name="submitEdit" id="submitEdit">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section ScriptsSecond{
+    <script>
+        //Details
+        function MenuClick(name, displayname, link) {
+            var str = "<dl class='dl-horizontal'>"
+            + "<dt>Tên đánh dấu</dt><dd>" + name + "</dd>"
+            + "<dt>Tên hiển thị</dt><dd>" + displayname + "</dd>"
+            + "<dt>Link</dt><dd>" + link + "</dd>"
+            + "</dl>"
+            + "<p><a href='#" + name + "' id='aEdit' name='" + name + "' data-DisplayName='" + displayname + "'data-Link='" + link + "'>Sửa</a> |"
+            + "<a href='/Admin/Menu/DeleteMenu0?name=" + name + "'>Xóa</a></p><hr/>";
+            $("#detailsMenu").html(str);
+        }
+        $(".itemMenu").on("click", function () {
+            $("#editMenu").css({ 'display': 'none' });
+            var name = $(this).attr("name");
+            var dislayname = $(this).attr("data-DisplayName");
+            var link = $(this).attr("data-Link");
+            MenuClick(name, dislayname, link);
+        });
+        //Edit
+        $(document).on("click", "#aEdit", function () {
+            $("#editMenu").css({ 'display': 'block' });
+            var name = $(this).attr("name");
+            var displayname = $(this).attr("data-DisplayName");
+            var link = $(this).attr("data-Link");
+            $("#editMenu #nameEdit").attr("value", name);
+            $("#editMenu #DisplayNameEdit").attr("value", displayname);
+            $("#editMenu #LinkEdit").attr("value", link);
+        });
+    </script>
+}*@

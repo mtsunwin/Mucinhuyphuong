@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Website_14042017.Models.ProductType>
+
+@{
+    ViewBag.Title = "Danh sách loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+
+<h2>Danh sách loại sản phẩm</h2>
+
+<p>
+    <a href="/Admin/LoaiSanPham/ThemMoiLSP">Thêm mới</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên loại sản phẩm
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th></th>
+    </tr>
+
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descrip)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Sua", new { name = item.Name }) |
+                        @Html.ActionLink("Xóa", "Xoa", new { name = item.Name })
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Website_14042017.Models.News>
+
+@{
+    ViewBag.Title = "Bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+
+<h2>Bài viết</h2>
+
+<div class="row">
+    <div class="col-lg-12"><a href="/Admin/news/writepost/">Viết bài mới</a> | <a href="/Admin/news/allnews/">Tất cả</a> | <a href="/Admin/news/allnews?type=writing">Đang viết</a> | <a href="/Admin/news/allnews?type=posted">Đã đăng</a></div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Tiêu đề
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Ngày cập nhật
+        </th>
+        <th>
+            Tác giả
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th></th>
+    </tr>
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Title
+                    </td>
+                    <td>
+                        @item.Descrip
+                    </td>
+                    <td>
+                        @item.DatePost
+
+                    </td>
+                    <td>
+                        @item.Author
+                    </td>
+                    <td>
+                        @item.Status
+                    </td>
+                    <td>
+                        <a href="/Admin/news/Edit/@item.Id">Sửa</a> |
+                        <a href="/Admin/news/DeleteNews/@item.Id">Xóa</a> |
+                        <a href="/Admin/news/ViewFull/@item.Id" target="_blank">Xem</a>
+                        @{
+                            if (@item.Status == "writing")
+                            {
+                               <span> | </span> <a href="/Admin/news/PostNews/@item.Id">Đăng bài</a>
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>

@@ -1,0 +1,266 @@
+﻿body {
+    font-family: Tahoma, 'Times New Roman', Arial;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+.top {
+    height: 110px;
+}
+
+/*Menu Top main*/
+.top-menu ul li a {
+    font-size: 13px;
+    color: #fff;
+    font-weight: bold;
+}
+
+    .top-menu ul li a:hover {
+        background: #4e4e4e;
+    }
+
+.top-menu ul li:hover ul {
+    display: inherit;
+}
+/*Menu child sub 01*/
+.dropdown-menu a {
+    width: 250px;
+}
+
+.dropdown-menu li a:hover {
+    color: #fff;
+}
+
+.top-menu .dropdown-menu {
+    background: #4e4e4e;
+}
+
+    .top-menu .dropdown-menu li:hover a {
+        background: #676666;
+    }
+
+    .top-menu .dropdown-menu li:hover li {
+        background: #676666;
+        visibility: visible;
+    }
+
+/*Menu child sub 03*/
+.top-menu-level-3 {
+    visibility: hidden;
+    position: absolute;
+    margin-left: 210px;
+    margin-top: -30px;
+}
+
+    .top-menu-level-3 ul {
+    }
+
+    .top-menu-level-3 li {
+        display: inherit;
+        list-style: none;
+    }
+
+        .top-menu-level-3 li a {
+            text-decoration: none;
+            display: block;
+            top: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 0 10px;
+            list-style: none;
+            width: 180px;
+            height: 40px;
+            line-height: 30px;
+            border-top: 1px solid #fff;
+        }
+
+            .top-menu-level-3 li a:hover {
+                background: #fff;
+            }
+/*END Menu child sub 03*/
+
+
+.dropdown-menu-right {
+}
+
+.container-body {
+}
+
+.container-menu-left > ul {
+    margin: 0;
+    padding: 0;
+}
+
+    .container-menu-left > ul > li {
+        list-style: none;
+        display: inherit;
+    }
+
+        .container-menu-left > ul > li > a {
+            display: block;
+            font-size: 14px;
+        }
+
+.footer {
+    width: auto;
+    height: 160px;
+    background: #676666;
+    margin: 0;
+    padding: 20px 10px;
+}
+
+    .footer a {
+        color: #0026ff;
+    }
+
+
+.footer-thongtin p {
+    font-family: Tahoma, Arial;
+    font-size: 11px;
+    color: #fff;
+}
+
+    .footer-thongtin p:first-child {
+        font-family: Tahoma, Arial;
+        font-size: 16px;
+        font-weight: bold;
+        color: red;
+    }
+/*Menu tin tuc*/
+.tintuc-menu {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+    .tintuc-menu li {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .tintuc-menu span {
+        color: #fff;
+        font-size: 8px;
+        float: left;
+        display: block;
+        height: 50px;
+        text-align: center;
+        padding-top: 3px;
+    }
+
+    .tintuc-menu li a {
+        text-decoration: none;
+        display: block;
+        transition: 0.2s;
+        font-size: 13px;
+        border-bottom: 1px solid #a9a9a9;
+        float: left;
+        background-color: #e1e1e1;
+        color: #000;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #fff;
+        width: 100%;
+    }
+
+        .tintuc-menu li a:hover {
+            color: red;
+        }
+/*title tin tuc*/
+#sptintuc {
+    color: #fff;
+    background-color: #4e4e4e;
+    display: block;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#sptintuc span{
+    font-size: 10px;
+    color: red;
+}
+/**Menu left type*/
+#menulefttype {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+    #menulefttype li {
+        line-height: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #menulefttype > li span {
+        color: red;
+        font-size: 8px;
+    }
+
+    #menulefttype ul {
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #menulefttype a {
+        color: #fff;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    #menulefttype > li {
+        background-color: #4e4e4e;
+    }
+
+        #menulefttype > li > a {
+            cursor: none;
+        }
+
+    #menulefttype ul li {
+        background-color: #676666;
+        border-bottom: 1px solid #fff;
+    }
+
+        #menulefttype ul li span {
+            color: #fff;
+        }
+
+        #menulefttype ul li:hover {
+        }
+
+            #menulefttype ul li:hover a {
+                color: red;
+            }
+
+/**host phone top*/
+#hostphonetop {
+    float: right;
+    margin-top: 30px;
+    color: #0026ff;
+    font-size: 15px;
+}
+
+    #hostphonetop span {
+        color: #0026ff;
+    }
+
+    #hostphonetop b {
+        color: red;
+    }
+/*view product home*/
+#viewproex{
+    clear: both;
+}
+#viewproex img{
+    width: 100px;
+    height: 100px;
+}

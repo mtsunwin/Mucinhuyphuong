@@ -1,0 +1,94 @@
+﻿@model Website_14042017.Models.Account
+
+@{
+    ViewBag.Title = "Cài đặt";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+
+<h2>Thông tin tài khoản</h2>
+@using (Html.BeginForm("ChangeInfo", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Tài khoản</h4>
+        <span class="text-danger field-validation-valid">@ViewBag.Message</span>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Name)
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Password">Mật khẩu</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line valid" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="text" value="">
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Password">Nhập lại mật khẩu</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line valid" data-val="true" data-val-required="The RePassword field is required." id="RePassword" name="RePassword" type="text" value="">
+                <span class="text-danger field-validation-valid" data-valmsg-for="RePassword" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Password">Số điện thoại</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Password">Web</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Web, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Web, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Blog, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Blog, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Blog, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Password">Mô tả</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descrip, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descrip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập nhật" class="btn btn-default" id="btn"/>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts{
+    <script>
+        $('form').on('submit', function () {
+            if ($('#RePassword').val() != $('#Password').val()) {
+                alert("Incorrect password");
+                return false;
+            }
+        });
+    </script>
+}

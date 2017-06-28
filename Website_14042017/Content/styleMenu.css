@@ -1,0 +1,160 @@
+﻿/*Menu level 0*/
+#viewmenu0{
+    width: 100%;
+    min-height: 50px;
+    clear: both;
+    background-color: #676666;
+    border-radius: 4px;
+}
+#viewmenu0 ul li{
+    display: inline;
+    float: left;
+    line-height: 28px;
+}
+#viewmenu0 ul li a{
+    color: #fff;
+    font-weight: bold;
+    cursor:default;
+}
+#viewmenu0 ul li a:hover{
+    background-color: #333;
+}
+#createmenu0{
+    border: 1px solid #cdcdcd;
+    width: 50%;
+    min-height: 400px;
+    float: left;
+}
+#createmenu0 h3{
+    text-align: center;
+}
+
+#informenu0{
+    border: 1px solid #cdcdcd;
+    width: 50%;
+    min-height: 400px;
+    float: left;
+}
+#informenu0 h3{
+    text-align: center;
+}
+#editMenu{
+    display: none;
+}
+/*Menu level 1*/
+#topmenu1{
+    width: 100%;
+    min-height: 50px;
+    clear: both;
+    border-radius: 4px;
+}
+#topmenu1 span:first-child{
+    line-height: 50px;
+    font-size: 15px;
+}
+#leftmenu1{
+    border: 1px solid #cdcdcd;
+    width: 100%;
+    height: 200px;
+    float: left;
+    overflow: scroll;
+}
+#rightmenu1{
+    border: 1px solid #cdcdcd;
+    width: 100%;
+    min-height: 200px;
+    float: left;
+}
+#rightmenu1 h4{
+    text-align: center;
+}
+#subrightmenu1{
+    border-right: 1px solid #cdcdcd;
+    width: 50%;
+    min-height: 200px;
+    height: 100%;
+    float: left;
+}
+#subrightmenu2{
+    width: 50%;
+    min-height: 200px;
+    height: 100%;
+    float: left;
+}
+#editsubrightmenu2{
+    display:none;
+}
+.m2label {
+    text-align: right;
+}
+
+/*Menu Top main*/
+.top-menu ul li a {
+    font-size: 13px;
+    color: #fff;
+    font-weight: bold;
+}
+
+    .top-menu ul li a:hover {
+        background: #4e4e4e;
+    }
+
+.top-menu ul li:hover ul {
+    display: inherit;
+}
+/*Menu child sub 01*/
+.dropdown-menu a {
+    width: 250px;
+}
+
+.dropdown-menu li a:hover {
+    color: #fff;
+}
+
+.top-menu .dropdown-menu {
+    background: #4e4e4e;
+}
+
+    .top-menu .dropdown-menu li:hover a {
+        background: #676666;
+    }
+
+    .top-menu .dropdown-menu li:hover li {
+        background: #676666;
+        visibility: visible;
+    }
+
+/*Menu child sub 03*/
+.top-menu-level-3 {
+    visibility: hidden;
+    position: absolute;
+    margin-left: 210px;
+    margin-top: -30px;
+}
+
+    .top-menu-level-3 ul {
+    }
+
+    .top-menu-level-3 li {
+        display: inherit;
+        list-style: none;
+    }
+
+        .top-menu-level-3 li a {
+            text-decoration: none;
+            display: block;
+            top: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 0 10px;
+            list-style: none;
+            width: 180px;
+            height: 40px;
+            line-height: 30px;
+            border-top: 1px solid #fff;
+        }
+
+            .top-menu-level-3 li a:hover {
+                background: #fff;
+            }
+/*END Menu child sub 03*/

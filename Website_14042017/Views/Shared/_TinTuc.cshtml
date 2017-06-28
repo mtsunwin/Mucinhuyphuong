@@ -1,0 +1,87 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!--START TOP (name css start by .top-...) -->
+    <div class="container">
+        <div class="row">
+            <div class="top">
+                <img src="~/Areas/Admin/Images/Img-Top/logotext11.png" />
+                <h4 style="float:right; line-height:30px;">HOTLINE: 1234567890</h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <nav class="navbar" style="background:#676666;">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="glyphicon glyphicon-align-justify" style="color:#fff;"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-home" style="color:#fff"></span>
+
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="top-menu">
+                    <ul class="nav navbar-nav">
+                        @{ Html.RenderAction("MenuLevel0", "MyPartialView");}
+                    </ul>
+                </div>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </div>
+    <!--END TOP (name css start by .top-...) -->
+    <!--START BODY (name css start by .container-body-...)-->
+    <div class="container-body">
+        <div class="container">
+            <div class="col-md-2 container-menu-left">
+                <ul>
+                    <li><a href="#">Tiêu đề 01</a></li>
+                    <li><a href="#">Tieu đề 02</a></li>
+                    <li><a href="#">Tieu đề 03</a></li>
+                    <li><a href="#">Tieu đề 04</a></li>
+                    <li><a href="#">Tieu đề 05</a></li>
+                    <li><a href="#">Tieu đề 06</a></li>
+                    <li>
+                        <a href="#">Tieu đề 07</a>
+                        <ul>
+                            <li><a href="#">Nội dung 01</a></li>
+                            <li><a href="#">Nội dung 02</a></li>
+                            <li><a href="#">Nội dung 03</a></li>
+                            <li><a href="#">Nội dung 04</a></li>
+                            <li><a href="#">Nội dung 05</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Tieu đề 08</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!--END BODY (name css start by .container-body-...)-->
+    <!--START FOOTER (name css start by .footer-...)-->
+    
+    <!--END FOOTER (name css start by .footer-...)-->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</body>
+</html>

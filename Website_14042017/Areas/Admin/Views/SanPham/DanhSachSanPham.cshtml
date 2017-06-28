@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Website_14042017.Models.Product>
+
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Them")
+    <span style="margin-left: 50px;">Danh sách theo</span>
+    <select id="selectProductType" name="selectProductType">
+        @{
+            if (@ViewBag.PrTypes != null)
+            {
+                foreach (var item in @ViewBag.PrTypes)
+                {
+                    <option value="@item.Name">@item.Name</option>
+                }
+            }
+        }
+    </select>
+</p>
+<table class="table" id="lstTable">
+    <tr><th>Tên SP</th><th>Loại SP</th><th>Nước SX</th><th>Nơi SX</th><th>Giá</th><th>Mô tả</th><th>Hình ảnh</th><th></th></tr>
+
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descrip)
+                    </td>
+                    <td>
+                        <img width="50" height="50" src="@item.Image" />
+                        @*@Html.DisplayFor(modelItem => item.Image)*@
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "Sua", new { name = item.Name }) |
+                        @Html.ActionLink("Xóa", "Xoa", new { name = item.Name })
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>
+@section Scripts{
+    <script>
+        $("#selectProductType").on('change', function () {
+            var lst = @Html.Raw(Json.Encode(Model));
+            var type = this.value;
+            var con = "<tbody><tr><th>Tên SP</th><th>Loại SP</th><th>Nước SX</th><th>Nơi SX</th><th>Giá</th><th>Mô tả</th><th>Hinh ảnh</th><th></th></tr>";
+            $(lst).each(function(i, val){
+                if(val.ProductType == type){
+                    con += "<tr><td>"+val.Name+"</td>";
+                    con += "<td>"+val.ProductType+"</td>";
+                    con += "<td>"+val.Country+"</td>";
+                    con += "<td>"+val.Manufacturer+"</td>";
+                    con += "<td>"+val.Price+"</td>";
+                    con += "<td>"+val.Descrip+"</td>";
+                    con += "<td>"+"<img width='50' height='50' src='"+val.Image+"'/>"+"</td>";
+                    con += "<td>"
+                        +"<a href='/Admin/SanPham/Sua?name="+val.Name+"'>Sửa</a> |"
+                        +"<a href='/Admin/SanPham/Xoa?name="+val.Name+"'>Xóa</a>"
+                        +"</td></tr>";
+                }
+            });
+            con+="</tbody";
+            $('#lstTable').html(con);
+        });
+    </script>
+}

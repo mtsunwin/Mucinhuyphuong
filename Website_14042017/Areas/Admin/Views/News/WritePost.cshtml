@@ -1,0 +1,93 @@
+﻿@model Website_14042017.Areas.Admin.Models.ModelNews
+
+@{
+    ViewBag.Title = "Viết bài";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminTemplate.cshtml";
+}
+
+<form action="/admin/news/WritedPost" method="post">
+<div class="form-horizontal">
+    <!-- button -->
+    <div class="form-group">
+            <div class="col-md-offset-5 col-md-10">
+                <input type="submit" value="Viết bài" class="btn btn-default" name="type" formnovalidate="formnovalidate">
+                <input type="submit" value="Đăng" class="btn btn-default" name="type">
+                <input type="submit" value="Lưu" class="btn btn-default" name="type">
+                <input type="submit" value="Đăng giới thiệu" class="btn btn-default" name="type">
+                <input type="submit" value="Đăng liên hệ" class="btn btn-default" name="type">
+                <input type="submit" value="Xem demo" class="btn btn-default" name="type" formnovalidate="formnovalidate" formtarget="_blank">
+                <a href="/Admin/news/DeleteNews/@Model.Id" class="btn btn-default">Xóa</a>
+                <input type="submit" value="Tất cả bài viết" class="btn btn-default" name="type" formnovalidate="formnovalidate">
+            </div>
+        </div>
+        <hr>
+    <!-- Error -->
+    <div class="form-group">
+        <div class="col-md-12">
+            @{
+                if (!string.IsNullOrEmpty(@ViewBag.NewsSuccessMessage))
+                {
+                    <span class="field-validation-valid text-danger">@ViewBag.NewsSuccessMessage</span>
+                }
+                else if (!string.IsNullOrEmpty(@ViewBag.ErrorNewMessage))
+                {
+                    <span class="field-validation-valid text-danger">@ViewBag.ErrorNewMessage</span>
+                }
+            }
+        </div>
+    </div>
+        <!-- Title -->
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Title">Tiêu đề</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Title" name="Title" type="text" value="@Model.Title" data-val="true" data-val-required="Trường này không để trống.">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <!-- Descrip -->
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Descrip">Tóm tắt</label>
+            <div class="col-md-10">
+                <textarea class = "form-control" id="Descrip" name="Descrip" rows="2">@Model.Descrip</textarea>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Descrip" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <!-- Content -->
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Content">Nội dung</label>
+            <div class="col-md-10">
+                <textarea class = "form-control" id="ckeditor" name="Content">@Model.Content</textarea>
+                <span class="field-validation-valid text-danger" data-valmsg-for="Content" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <!-- Author -->
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Author">Viết bởi</label>
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="Author" name="Author" type="text" value="@Model.Author">
+                <span class="field-validation-valid text-danger" data-valmsg-for="Author" data-valmsg-replace="true"></span>
+            </div>
+        </div>
+        <input type="hidden" name="Id" value="@Model.Id"/>
+            <!-- button -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Viết bài" class="btn btn-default" name="type" formnovalidate="formnovalidate">
+                <input type="submit" value="Đăng" name="type" class="btn btn-default">
+                <input type="submit" value="Lưu" name="type" class="btn btn-default">
+                <input type="submit" value="Đăng giới thiệu" class="btn btn-default" name="type">
+                <input type="submit" value="Đăng liên hệ" class="btn btn-default" name="type">
+                <input type="submit" value="Xem demo" class="btn btn-default" name="type" formnovalidate="formnovalidate" formtarget="_blank">
+                <a href="/Admin/news/DeleteNews/@Model.Id" class="btn btn-default">Xóa</a>
+                <input type="submit" value="Tất cả bài viết" class="btn btn-default" name="type" formnovalidate="formnovalidate">
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts{
+    <script>
+        var editor = CKEDITOR.replace('ckeditor', {
+            filebrowserImageBrowseUrl: '/admin/News/ImageRepository'
+        });
+    </script>
+}

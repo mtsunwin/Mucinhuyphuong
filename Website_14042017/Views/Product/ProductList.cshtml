@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Website_14042017.Models.Product>
+
+@{
+    ViewBag.Title = @Request.Params["type"].ToString();
+    Layout = "~/Views/Shared/_Template.cshtml";
+}
+<div class="row" style="margin-bottom: 10px; padding-left: 15px"> 
+    <h2>Danh sách @Request.Params["type"].ToString()</h2>
+</div>
+<div class="row">
+    @{
+        if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="@item.Image" alt="..." style="width: 100px; height: 100px;">
+                        <div class="caption" style="margin: auto; top: 0; bottom: 0; left: 0; right: 0; text-align: center;">
+                            <h4>@item.Name</h4>
+                            <p>
+                                <a href="/product/productdetails?name=@item.Name" class="btn btn-primary" role="button" style="background:rgba(9, 70, 215, 0.45);text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black">
+                                    <b>Xem chi tiết</b>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>
