@@ -128,27 +128,26 @@
             url: '/WebInfos/GetInfo',
             type: 'GET',
             success: function (data) {
+                var str1 = "";
+                var str2 = "";
                 $(data).each(function (i, val) {
-                    var str1 = "";
-                    var str2 = "";
-
                     if (i == 0) {
-                        str1 += "<p>" + val.CompanyName + "</p>"
+                        str1 += "<p style='color:#fff;'>" + val.CompanyName + "</p>"
                          + "<p>ĐC: " + val.Address + "</p>"
                          + "<p>Tel : " + val.Hotline + "</p>"
                          + "<p>Email : " + val.Email + "</p>"
                          + "<p>Website :<a href='" + val.LinkWeb + "'>" + val.LinkWeb + "</a></p>";
                     }
                     else {
-                        str2 += "<p>" + val.CompanyName + "</p>"
+                        str2 += "<p style='color:#fff;'>" + val.CompanyName + "</p>"
                         + "<p>ĐC: " + val.Address + "</p>"
                         + "<p>Tel : " + val.Hotline + "</p>"
                         + "<p>Email : " + val.Email + "</p>"
                         + "<p>Website :<a href='" + val.LinkWeb + "'>" + val.LinkWeb + "</a></p>";
                     }
-                    $('#thongtin1').html(str1);
-                    $('#thongti21').html(str2);
                 });
+                $('#thongtin1').html(str1);
+                $('#thongtin2').html(str2);
             }
         });
     </script>
