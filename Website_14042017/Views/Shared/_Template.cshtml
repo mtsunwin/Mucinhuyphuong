@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="top">
-                <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120px"/>
+                <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120" id="imgBanner"/>
                 <div id="hostphonetop" ng-app="myApp" ng-controller="customersCtrl">
                     <span class="glyphicon glyphicon-earphone" style="font-size:20px;"></span> <span style="font-size: 20px; font-family: tahoma;"> Hotline: </span><b>{{myData}}</b>
                 </div>
@@ -158,6 +158,15 @@
             $http.get("/WebInfos/GetInfo").then(function (response) {
                 $scope.myData = response.data[0].Hotline;
             });
+        });
+
+        /***** get panner ******/
+        $.ajax({
+            url: '/Home/GetBanner',
+            type: 'GET',
+            success: function (data) {
+                $('#imgBanner').attr('src',data.Path);
+            }
         });
     </script>
     @RenderSection("ScriptUser", false)
