@@ -25,7 +25,7 @@ namespace Website_14042017.DAL
         }
         public bool ChangeInfo(Account acc, string email, string password)
         {
-            using(var db = new DBWebsite14042017Context())
+            using (var db = new DBWebsite14042017Context())
             {
                 try
                 {
@@ -38,6 +38,7 @@ namespace Website_14042017.DAL
                         account.Web = acc.Web;
                         account.Descrip = acc.Descrip;
                         account.Blog = acc.Blog;
+                        db.Entry(account).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
                         return true;
                     }

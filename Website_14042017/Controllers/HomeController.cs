@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Website_14042017.DAL;
 using Website_14042017.ModelViews;
 
@@ -147,6 +148,40 @@ namespace Website_14042017.Controllers
                 _news = null;
             }
             return View(_news);
+        }
+        public ActionResult GetSlider()
+        {
+            List<ImageView> lst = new List<ImageView>();
+            try
+            {
+                ImageDAL imgDAL = new ImageDAL();
+                var imgs = imgDAL.GetSlider();
+
+                foreach (var img in imgs)
+                {
+                    lst.Add(new ImageView { Name = img.Name, Path = img.Link });
+                }
+            }
+            catch
+            {
+
+            }
+            return Json(lst, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult GetBanner()
+        {
+            ImageView imgView = new ImageView();
+            try
+            {
+                ImageDAL imgDAL = new ImageDAL();
+                var img = imgDAL.GetBanner();
+                imgView = new ModelViews.ImageView { Name = img.Name, Path = img.Link };
+            }
+            catch
+            {
+
+            }
+            return Json(imgView, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -63,6 +63,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -173,6 +174,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductType.cs" />
     <Compile Include="Models\WebsiteInfor.cs" />
+    <Compile Include="ModelViews\ImageView.cs" />
     <Compile Include="ModelViews\MenuLevel0View.cs" />
     <Compile Include="ModelViews\MenuLevel1View.cs" />
     <Compile Include="ModelViews\NewsView.cs" />
@@ -703,6 +705,8 @@
     <Content Include="Areas\Admin\Views\WebInfos\Create.cshtml" />
     <Content Include="Areas\Admin\Views\WebInfos\Index.cshtml" />
     <Content Include="Areas\Admin\Views\WebInfos\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Image\AddBanner.cshtml" />
+    <Content Include="Areas\Admin\Views\Image\BannerList.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -746,6 +750,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Banners\" />
     <Folder Include="Areas\Admin\Views\AdminBase\" />
     <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Areas\Admin\Views\Index\" />
