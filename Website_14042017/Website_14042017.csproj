@@ -180,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Images\Gallary\test.png" />
+    <Content Include="Areas\Admin\Images\Gallary\Untitled-1.png" />
     <Content Include="Areas\Admin\Images\Img-Top\logotext11.png" />
     <Content Include="Areas\Admin\Images\Item\May cang khung.jpg" />
     <Content Include="Areas\Admin\Images\Item\May chup ban den UV.jpg" />
