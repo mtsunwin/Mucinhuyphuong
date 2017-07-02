@@ -10,6 +10,7 @@
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <title>@ViewBag.Title</title>
     @RenderSection("HeaderCSS", false)
 </head>
@@ -18,8 +19,10 @@
     <div class="container">
         <div class="row">
             <div class="top">
-                <img src="~/Areas/Admin/Images/Img-Top/logotext11.png" />
-                <div id="hostphonetop"><span class="glyphicon glyphicon-earphone"></span>Hotline: <b>1234567890</b></div>
+                <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120px"/>
+                <div id="hostphonetop" ng-app="myApp" ng-controller="customersCtrl">
+                    <span class="glyphicon glyphicon-earphone" style="font-size:20px;"></span> <span style="font-size: 20px; font-family: tahoma;"> Hotline: </span><b>{{myData}}</b>
+                </div>
             </div>
         </div>
     </div>
@@ -32,14 +35,12 @@
                 </button>
                 <a class="navbar-brand" href="/home/">
                     <span class="glyphicon glyphicon-home" style="color:#fff"></span>
-
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="top-menu">
                     <ul class="nav navbar-nav" id="menutop">
-                       
                     </ul>
                 </div>
             </div><!-- /.navbar-collapse -->
@@ -57,7 +58,6 @@
                 <div class="row" style="border:1px solid; margin-bottom:5px;">
                     <span id="sptintuc"><span class="glyphicon glyphicon-triangle-right"></span>  TIN TỨC</span>
                     <ul class="tintuc-menu" id="tintucmoi"></ul>
-
                 </div>
             </div>
 
@@ -72,12 +72,15 @@
         <div class="footer">
             <div class="row">
                 <div class="col-md-4">
+                    <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120px"/>
+                </div>
+                <div class="col-md-4">
                     <div class="footer-thongtin">
                         <div id="thongtin1">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 footer-thongtin">
+                <div class="col-md-4 footer-thongtin">
                     <div id="thongtin2">
                     </div>
                 </div>
@@ -136,19 +139,25 @@
                          + "<p>ĐC: " + val.Address + "</p>"
                          + "<p>Tel : " + val.Hotline + "</p>"
                          + "<p>Email : " + val.Email + "</p>"
-                         + "<p>Website :<a href='" + val.LinkWeb + "'>" + val.LinkWeb + "</a></p>";
+                         + "<p>Website : <a href='" + val.LinkWeb + "'style='color:#fff;'>" + val.LinkWeb + "</a></p>";
                     }
                     else {
                         str2 += "<p style='color:#fff;'>" + val.CompanyName + "</p>"
                         + "<p>ĐC: " + val.Address + "</p>"
                         + "<p>Tel : " + val.Hotline + "</p>"
                         + "<p>Email : " + val.Email + "</p>"
-                        + "<p>Website :<a href='" + val.LinkWeb + "'>" + val.LinkWeb + "</a></p>";
+                        + "<p>Website : <a href='" + val.LinkWeb + "'style='color:#fff;'>" + val.LinkWeb + "</a></p>";
                     }
                 });
                 $('#thongtin1').html(str1);
                 $('#thongtin2').html(str2);
             }
+        });
+        var app = angular.module('myApp', []);
+        app.controller('customersCtrl', function ($scope, $http) {
+            $http.get("/WebInfos/GetInfo").then(function (response) {
+                $scope.myData = response.data[0].Hotline;
+            });
         });
     </script>
     @RenderSection("ScriptUser", false)

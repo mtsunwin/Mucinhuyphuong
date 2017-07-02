@@ -184,6 +184,7 @@
     <Content Include="Areas\Admin\Images\Item\May cang khung.jpg" />
     <Content Include="Areas\Admin\Images\Item\May chup ban den UV.jpg" />
     <Content Include="Areas\Admin\Images\Item\May in ao thun APOLLO.jpg" />
+    <Content Include="Areas\Admin\Images\z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" />
     <Content Include="Areas\Admin\Plugins\ckeditor\adapters\jquery.js" />
     <Content Include="Areas\Admin\Plugins\ckeditor\build-config.js" />
     <Content Include="Areas\Admin\Plugins\ckeditor\ckeditor.js" />
