@@ -56,7 +56,8 @@
                     </ul>
                 </div>
                 <div class="row" style="border:1px solid; margin-bottom:5px;">
-                    <span id="sptintuc"><span class="glyphicon glyphicon-triangle-right"></span>  TIN TỨC</span>
+                    <span id="sptintuc">
+                    <span class="glyphicon glyphicon-triangle-right"></span>  TIN TỨC</span>
                     <ul class="tintuc-menu" id="tintucmoi"></ul>
                 </div>
             </div>
@@ -102,9 +103,6 @@
                     lstNews += "<li><a href='/newsuser/NewsContent/" + val.Id + "'><span class='glyphicon glyphicon-triangle-right'></span>" + val.Title + "</a></li>";
                 });
                 $("#tintucmoi").html(lstNews);
-            },
-            error: function () {
-
             }
         });
         $.ajax({
@@ -112,9 +110,6 @@
             type: 'GET',
             success: function (data) {
                 $("#menutop").html(data);
-            },
-            error: function (error) {
-              
             }
         });
         $.ajax({
@@ -122,9 +117,6 @@
             type: 'GET',
             success: function (data) {
                 $("#menulefttype").html(data);
-            },
-            error: function (error) {
-                
             }
         });
         $.ajax({
