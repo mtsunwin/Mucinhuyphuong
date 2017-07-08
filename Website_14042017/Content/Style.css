@@ -110,7 +110,7 @@
 
 .footer {
     width: auto;
-    height: 160px;
+    height: auto;
     background: rgba(23, 80, 144, 0.92);
     margin: 0;
     padding: 20px 10px;

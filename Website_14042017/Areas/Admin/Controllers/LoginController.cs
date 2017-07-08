@@ -36,7 +36,8 @@ namespace Website_14042017.Areas.Admin.Controllers
                 {
                     ViewBag.Message = "Thay đổi không thành công";
                 }
-                return View(acc);
+                Account _acc = accDAL.Get(acc.Email, acc.Password);
+                return View(_acc);
             }
             else
             {
