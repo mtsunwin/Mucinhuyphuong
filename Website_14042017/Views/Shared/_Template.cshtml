@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="top">
-                <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120" id="imgBanner"/>
+                <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120" id="imgBanner" />
                 <div id="hostphonetop" ng-app="myApp" ng-controller="customersCtrl">
                     <span class="glyphicon glyphicon-earphone" style="font-size:20px;"></span> <span style="font-size: 20px; font-family: tahoma;"> Hotline: </span><b>{{myData}}</b>
                 </div>
@@ -40,8 +40,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="top-menu">
-                    <ul class="nav navbar-nav" id="menutop">
-                    </ul>
+                    <ul class="nav navbar-nav" id="menutop"></ul>
                 </div>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -52,16 +51,15 @@
         <div class="container">
             <div class="col-md-2 container-menu-left" style="padding:0px;">
                 <div class="row" style="border:1px solid; margin-bottom:5px;">
-                    <ul id="menulefttype">
-                    </ul>
+                    <ul id="menulefttype"></ul>
                 </div>
                 <div class="row" style="border:1px solid; margin-bottom:5px;">
                     <span id="sptintuc">
-                    <span class="glyphicon glyphicon-triangle-right"></span>  TIN TỨC</span>
+                        <span class="glyphicon glyphicon-triangle-right"></span>  TIN TỨC
+                    </span>
                     <ul class="tintuc-menu" id="tintucmoi"></ul>
                 </div>
             </div>
-
             <div class="col-md-10" style="padding: 0px 0px 0px 5px; margin: 0px">
                 @RenderBody()
             </div>
@@ -73,7 +71,7 @@
         <div class="footer">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120px"/>
+                    <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120px" />
                 </div>
                 <div class="col-md-4">
                     <div class="footer-thongtin">
@@ -92,6 +90,8 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     <script>
         $.ajax({
             url: '/home/GetNew',
@@ -161,6 +161,25 @@
             }
         });
     </script>
+
+    <script>
+        $(function () {
+            var counterHub = $.connection.counterHub;
+            $.connection.hub.start().done(function () {
+                // do something hub connected
+            });
+            counterHub.client.UpdateCount = function (count) {
+                $('#counter').text(count);
+            }
+            counterHub.client.UpdateDay = function (day) {
+                $('#totalUserOfDay').text(day);
+            }
+            counterHub.client.UpdateWeek = function (week) {
+                $('#totalUserOfWeek').text(week);
+            }
+        });
+    </script>
+
     @RenderSection("ScriptUser", false)
 </body>
 </html>
