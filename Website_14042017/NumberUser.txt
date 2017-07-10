@@ -1,3 +1,3 @@
 [0]:Monday
-[1]:TotalUserOfDay:6
-[2]:TotalUserOfWeek:6
+[1]:TotalUserOfDay:9
+[2]:TotalUserOfWeek:9
