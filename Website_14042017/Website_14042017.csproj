@@ -175,7 +175,6 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\ImageDAL.cs" />
-    <Compile Include="DAL\InfoDAL.cs" />
     <Compile Include="DAL\MenuDAL.cs" />
     <Compile Include="DAL\NewsDAL.cs" />
     <Compile Include="DAL\ProductDAL.cs" />

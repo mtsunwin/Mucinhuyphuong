@@ -20,14 +20,18 @@ namespace Website_14042017.Hubs
 
             if (DateTime.Now.DayOfWeek.ToString() == "Monday")
             {
-                totalUserOfDay = 0;
-                totalUserOfWeek = 0;
-
-                WriteInfoNumberUser(totalUserOfDay, totalUserOfWeek);
                 ReadInfoNumberUser();
+                if (dayWrited != "Monday")
+                {
+                    totalUserOfDay = 0;
+                    totalUserOfWeek = 0;
+
+                    WriteInfoNumberUser(totalUserOfDay, totalUserOfWeek);
+                    ReadInfoNumberUser();
+                }
             }
 
-            if(dayWrited != DateTime.Now.Day.ToString())
+            if (dayWrited != DateTime.Now.DayOfWeek.ToString())
             {
                 totalUserOfDay = 0;
             }
@@ -73,15 +77,15 @@ namespace Website_14042017.Hubs
                         point = text.LastIndexOf(':') + 1;
                         if (index == 0)
                         {
-                            dayWrited = text.Substring(index);
+                            dayWrited = text.Substring(point);
                         }
                         else if (index == 1)
                         {
-                            totalUserOfDay = long.Parse(text.Substring(index));
+                            totalUserOfDay = long.Parse(text.Substring(point));
                         }
                         else if (index == 2)
                         {
-                            totalUserOfWeek = long.Parse(text.Substring(index));
+                            totalUserOfWeek = long.Parse(text.Substring(point));
                         }
                         index++;
                     }
@@ -99,11 +103,11 @@ namespace Website_14042017.Hubs
                 int index = 0;
                 using (var file = new StreamWriter(HttpContext.Current.Server.MapPath("/NumberUser.txt")))
                 {
-                    file.WriteLine("[{0}]:{1}", index,DateTime.Now.Day.ToString());
+                    file.WriteLine("[{0}]:{1}", index, DateTime.Now.DayOfWeek.ToString());
                     index++;
-                    file.WriteLine("[{0}]:TotalUserOfDay:{1}",index,number1);
+                    file.WriteLine("[{0}]:TotalUserOfDay:{1}", index, number1);
                     index++;
-                    file.WriteLine("[{0}]:TotalUserOfWeek:{1}",index, number2);
+                    file.WriteLine("[{0}]:TotalUserOfWeek:{1}", index, number2);
                 }
             }
             catch
