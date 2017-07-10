@@ -31,6 +31,5 @@ namespace Website_14042017.Models
         public DbSet<Product> Products { get; set; }
         //9
         public DbSet<Account> Accounts { get; set; }
-        //10
     }
 }
