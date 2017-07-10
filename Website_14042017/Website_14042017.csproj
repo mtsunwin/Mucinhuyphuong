@@ -175,6 +175,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\ImageDAL.cs" />
+    <Compile Include="DAL\InfoDAL.cs" />
     <Compile Include="DAL\MenuDAL.cs" />
     <Compile Include="DAL\NewsDAL.cs" />
     <Compile Include="DAL\ProductDAL.cs" />
@@ -188,15 +189,10 @@
     <Compile Include="Migrations\201706151714392_InitialCreate.Designer.cs">
       <DependentUpon>201706151714392_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707100856495_AddClassInfo.cs" />
-    <Compile Include="Migrations\201707100856495_AddClassInfo.Designer.cs">
-      <DependentUpon>201707100856495_AddClassInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\DBWebsite14042017Context.cs" />
     <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\Info.cs" />
     <Compile Include="Models\MenuLevel0.cs" />
     <Compile Include="Models\MenuLevel1.cs" />
     <Compile Include="Models\MenuLevel2.cs" />
@@ -801,9 +797,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706151714392_InitialCreate.resx">
       <DependentUpon>201706151714392_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707100856495_AddClassInfo.resx">
-      <DependentUpon>201707100856495_AddClassInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
