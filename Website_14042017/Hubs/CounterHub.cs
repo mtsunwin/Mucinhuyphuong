@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
 using System;
-using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using System.IO;
@@ -17,10 +16,13 @@ namespace Website_14042017.Hubs
 
         public override Task OnConnected()
         {
-
+            if(counter <= 0)
+            {
+                flagFromDisToCon = false;
+            }
+            ReadInfoNumberUser();
             if (DateTime.Now.DayOfWeek.ToString() == "Monday")
             {
-                ReadInfoNumberUser();
                 if (dayWrited != "Monday")
                 {
                     totalUserOfDay = 0;
