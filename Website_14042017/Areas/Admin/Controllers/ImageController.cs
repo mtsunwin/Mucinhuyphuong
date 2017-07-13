@@ -172,7 +172,7 @@ namespace Website_14042017.Areas.Admin.Controllers
                     return RedirectToAction("BannerList");
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return Content("Xóa thất bại.");
             }
