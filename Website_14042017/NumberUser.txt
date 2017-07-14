@@ -1,0 +1,3 @@
+[0]:Tuesday
+[1]:TotalUserOfDay:14
+[2]:TotalUserOfWeek:23
