@@ -34,8 +34,6 @@ namespace Website_14042017.Hubs
                 totalUserOfDay = 0;
             }
 
-            if (counter <= 0)
-                flagFromDisToCon = false;
             if (flagFromDisToCon == false)//no change when reload
             {
                 totalUserOfWeek++;

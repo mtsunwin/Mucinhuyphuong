@@ -81,7 +81,7 @@ namespace Website_14042017.Controllers
                 if (types != null)
                     foreach (var item in types)
                     {
-                        menu += "<li><span class='glyphicon glyphicon-triangle-right'></span>  <a href='#'>" + item.Name.ToUpper() + "</a>";
+                        menu += "<li><span class='glyphicon glyphicon-triangle-right'></span> "+ item.Name.ToUpper();
                         menu += "<ul>";
                         if (pr != null)
                             foreach (var itemnext in pr)
