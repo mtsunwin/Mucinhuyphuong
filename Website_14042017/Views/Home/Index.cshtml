@@ -3,10 +3,12 @@
     Layout = "~/Views/Shared/_Template.cshtml";
     ViewBag.Title = "Thông tin vật tư in lưới";
 }
-<<<<<<< HEAD
+@*<<<<<<< HEAD
 <div class="row" ng-app="" ng-controller="minhthang">
     <span>{{username}}</span>
 </div>
+=======
+>>>>>>> 7429b6df94e5ddfb95ab8459f57aa643932fd941*@
 <script>
     function minhthang($scope) {
         $scope.username = 'Minh Thawngs';
@@ -14,13 +16,18 @@
 </script>
 
 <!--Slider-->
-=======
->>>>>>> 7429b6df94e5ddfb95ab8459f57aa643932fd941
+
 <div class="row" style="padding: 30px 20px">
     <div style="width:100%; height:auto;">
         @{
             if (Model != null)
             {
+                <div class="row">
+                    <h2 class="col-lg-12 text-center"><strong>@Model.Title</strong></h2>
+                </div>
+                <div class="row">
+                    <h3 class="col-lg-12 text-center">@Model.Descrip</h3><br />
+                </div>
                 @Html.Raw(Model.Content)
             }
         }

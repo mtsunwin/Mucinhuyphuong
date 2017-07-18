@@ -16,6 +16,7 @@ namespace Website_14042017.DAL
                 {
                     using (var db = new DBWebsite14042017Context())
                     {
+                        prType.Name = prType.Name.Trim();
                         db.ProductTypes.Add(prType);
                         db.SaveChanges();
                     }

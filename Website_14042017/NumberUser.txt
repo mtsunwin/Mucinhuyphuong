@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 [0]:Saturday
 [1]:TotalUserOfDay:2
 [2]:TotalUserOfWeek:25
+=======
+[0]:Tuesday
+[1]:TotalUserOfDay:15
+[2]:TotalUserOfWeek:15
+>>>>>>> 7acf327ef173303c5baebe514f78879d842354bc
