@@ -43,7 +43,7 @@ namespace Website_14042017.Areas.Admin.Controllers
                 string ext = uploadImg.FileName.Substring(uploadImg.FileName.IndexOf('.'));
                 if (ext.ToLower().Contains("gif") || ext.ToLower().Contains("jpg") || ext.ToLower().Contains("jpeg") || ext.ToLower().Contains("png"))
                 {
-                    string pic = System.IO.Path.GetFileName(uploadImg.FileName);
+                    string pic = uploadImg.FileName.Substring(uploadImg.FileName.LastIndexOf('\\') + 1);
                     string path = System.IO.Path.Combine(
                                            Server.MapPath("~/areas/admin/images/Item/"), pic);
                     // file is uploaded
@@ -57,7 +57,7 @@ namespace Website_14042017.Areas.Admin.Controllers
                         uploadImg.InputStream.CopyTo(ms);
                         byte[] array = ms.GetBuffer();
                     }
-                    pr.Image = "/areas/admin/images/Item/" + uploadImg.FileName;
+                    pr.Image = "/areas/admin/images/Item/" + uploadImg.FileName.Substring(uploadImg.FileName.LastIndexOf('\\') + 1);
                     prDAL.Add(pr);
                     return RedirectToAction("DanhSachSanPham");
                 }
