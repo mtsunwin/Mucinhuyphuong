@@ -1,11 +1,10 @@
-﻿body {
+﻿﻿body {
     font-family: Tahoma, 'Times New Roman', Arial;
     font-size: 12px;
     margin: 0;
     padding: 0;
     color: #000;
 }
-
 .row {
     margin: 0;
     padding: 0;
@@ -17,9 +16,12 @@
 
 /*Menu Top main*/
 .top-menu ul li a {
+    color: rgb(255, 255, 255);
+    font-family: tahoma;
     font-size: 13px;
-    color: #fff;
     font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
     .top-menu ul li a:hover {
@@ -91,6 +93,9 @@
 }
 
 .container-body {
+}
+#menulefttype > li > a:hover{
+    cursor: pointer;
 }
 
 .container-menu-left > ul {
