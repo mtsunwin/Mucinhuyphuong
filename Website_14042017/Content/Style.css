@@ -25,7 +25,7 @@
 }
 
     .top-menu ul li a:hover {
-        background: #4e4e4e;
+        color: #000;
     }
 
 .top-menu ul li:hover ul {
@@ -40,16 +40,17 @@
     color: #fff;
 }
 
-.top-menu .dropdown-menu {
-    background: #4e4e4e;
+.top-menu .dropdown-menu{
+    background: #008aff
+}
+.top-menu .dropdown-menu li{
+    background-image: url('../nav-sub.png');
 }
 
     .top-menu .dropdown-menu li:hover a {
-        background: #676666;
     }
 
     .top-menu .dropdown-menu li:hover li {
-        background: #676666;
         visibility: visible;
     }
 
@@ -94,10 +95,18 @@
 
 .container-body {
 }
-#menulefttype > li > a:hover{
+#menulefttype{
+}
+#menulefttype > li:hover{
     cursor: pointer;
 }
-
+#menulefttype > li{
+    color: #fff;
+    display: block;
+}
+#menulefttype > li > ul{
+     display: block;
+ }
 .container-menu-left > ul {
     margin: 0;
     padding: 0;
@@ -106,13 +115,13 @@
     .container-menu-left > ul > li {
         list-style: none;
         display: inherit;
+        color: #fff;
     }
 
         .container-menu-left > ul > li > a {
             display: block;
             font-size: 14px;
         }
-
 .footer {
     width: auto;
     height: auto;
