@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     Layout = null;
 }
 
@@ -19,16 +19,13 @@
     <div class="container">
         <div class="row">
             <div class="top">
-                <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120" id="imgBanner" />
+                <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120" class="imgBanner" />
                 <div id="hostphonetop" ng-app="myApp" ng-controller="customersCtrl">
                     <span class="glyphicon glyphicon-earphone" style="font-size:20px;"></span> <span style="font-size: 20px; font-family: tahoma;"> Hotline: </span><b>{{myData}}</b>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
         @*Slider*@
->>>>>>> 7429b6df94e5ddfb95ab8459f57aa643932fd941
         <div class="row" style="margin:10px 0">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
@@ -37,10 +34,7 @@
                 <div class="carousel-inner" role="listbox" id="list-slide">
 
                 </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 7429b6df94e5ddfb95ab8459f57aa643932fd941
                 <!-- Controls -->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -92,20 +86,20 @@
                     </span>
                     <div class="col-sm-12">
                         <div class="row">
-                            <span class="col-sm-offset-0 col-sm-8 text-left">Trực tuyến:  </span>
-                            <strong id="counter" class="col-sm-4 text-center"></strong>
+                            <span class="col-sm-offset-0 col-sm-9 text-left">Trực tuyến:  </span>
+                            <strong id="counter" class="col-sm-3 text-center"></strong>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="row">
-                            <span class="col-sm-offset-0 col-sm-8 text-left">Trong ngày:  </span>
-                            <strong id="totalUserOfDay" class="col-sm-4 text-center"></strong>
+                            <span class="col-sm-offset-0 col-sm-9 text-left">Trong ngày:  </span>
+                            <strong id="totalUserOfDay" class="col-sm-3 text-center"></strong>
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="row">
-                            <span class="col-sm-offset-0 col-sm-8 text-left">Trong tuần : </span>
-                            <strong id="totalUserOfWeek" class="col-sm-4 text-center"></strong>
+                            <span class="col-sm-offset-0 col-sm-9 text-left">Trong tuần : </span>
+                            <strong id="totalUserOfWeek" class="col-sm-3 text-center"></strong>
                         </div>
                     </div>
                 </div>
@@ -121,14 +115,12 @@
         <div class="footer">
             <div class="row">
                 <div class="col-md-4">
-                    <img src="~/Areas/Admin/Images/z608697457304_d3351fa88d71373b89864ea9a9cbc723.png" style="margin-top: 10px; top: 0; left:0; right:0; bottom:0; padding:0" width="120px" />
-                </div>
-                <div class="col-md-4">
                     <div class="footer-thongtin">
                         <div id="thongtin1">
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4"></div>
                 <div class="col-md-4 footer-thongtin">
                     <div id="thongtin2">
                     </div>
@@ -173,6 +165,7 @@
             url: '/WebInfos/GetInfo',
             type: 'GET',
             success: function (data) {
+                var count = 0;
                 var str1 = "";
                 var str2 = "";
                 $(data).each(function (i, val) {
@@ -182,6 +175,7 @@
                          + "<p>Tel : " + val.Hotline + "</p>"
                          + "<p>Email : " + val.Email + "</p>"
                          + "<p>Website : <a href='" + val.LinkWeb + "'style='color:#fff;'>" + val.LinkWeb + "</a></p>";
+                        count++;
                     }
                     else {
                         str2 += "<p style='color:#fff;'>" + val.CompanyName + "</p>"
@@ -189,6 +183,7 @@
                         + "<p>Tel : " + val.Hotline + "</p>"
                         + "<p>Email : " + val.Email + "</p>"
                         + "<p>Website : <a href='" + val.LinkWeb + "'style='color:#fff;'>" + val.LinkWeb + "</a></p>";
+                        count++;
                     }
                 });
                 $('#thongtin1').html(str1);
@@ -199,7 +194,7 @@
         app.controller('customersCtrl', function ($scope, $http) {
             $http.get("/HotLine/GetHotLine").then(function (response) {
                 $scope.myData = response.data;
-                    //.data[0].Hotline;
+                //.data[0].Hotline;
             });
         });
 
@@ -208,7 +203,7 @@
             url: '/Home/GetBanner',
             type: 'GET',
             success: function (data) {
-                $('#imgBanner').attr('src',data.Path);
+                $('.imgBanner').attr('src', data.Path);
             }
         });
     </script>
@@ -240,11 +235,11 @@
                     /***** carousel *******/
                     if (i == 0) {
                         $('#car').append("<li data-target='#carousel-example-generic' data-slide-to='" + i + "' class='active'></li>");
-                        $('#list-slide').append("<div class='item active'><img src='" + val.Path + "' alt='Gallary' style='width:100%;'><div class='carousel-caption'></div></div>");
+                        $('#list-slide').append("<div class='item active'><img src='" + val.Path + "' alt='Gallary' style='width:1140px; height:300px;'><div class='carousel-caption'></div></div>");
                     }
                     else {
                         $('#car').append("<li data-target='#carousel-example-generic' data-slide-to='" + i + "'></li>");
-                        $('#list-slide').append("<div class='item'><img src='" + val.Path + "' alt='Gallary' style='width:100%;'><div class='carousel-caption'></div></div>");
+                        $('#list-slide').append("<div class='item'><img src='" + val.Path + "' alt='Gallary' style='width:1140px; height:300px;'><div class='carousel-caption'></div></div>");
                     }
                     /*****  *****/
 

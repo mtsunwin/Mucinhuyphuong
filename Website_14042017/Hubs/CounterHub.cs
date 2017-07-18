@@ -12,14 +12,10 @@ namespace Website_14042017.Hubs
         static long totalUserOfDay = 0;
         static long totalUserOfWeek = 0;
         static bool flagFromDisToCon = false;
-        static string dayWrited = DateTime.Now.Day.ToString();
+        static string dayWrited = DateTime.Now.DayOfWeek.ToString();
 
         public override Task OnConnected()
         {
-            if(counter <= 0)
-            {
-                flagFromDisToCon = false;
-            }
             ReadInfoNumberUser();
             if (DateTime.Now.DayOfWeek.ToString() == "Monday")
             {
@@ -38,7 +34,9 @@ namespace Website_14042017.Hubs
                 totalUserOfDay = 0;
             }
 
-            if (!flagFromDisToCon)
+            if (counter <= 0)
+                flagFromDisToCon = false;
+            if (flagFromDisToCon == false)//no change when reload
             {
                 totalUserOfWeek++;
                 totalUserOfDay++;
